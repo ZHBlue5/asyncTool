@@ -41,7 +41,6 @@ public class TestPar {
         ParWorker1 w1 = new ParWorker1();
         ParWorker2 w2 = new ParWorker2();
 
-        GroupCallback groupCallback = new GroupCallback();
 
         WorkerWrapper<String, String> workerWrapper2 =
             new WorkerWrapper.Builder<String, String>().worker(w2).callback(w2).param("2").build();
@@ -55,7 +54,7 @@ public class TestPar {
         long now = SystemClock.now();
         System.out.println("begin-" + now);
 
-        Async.beginWorkAsync(groupCallback, workerWrapper, workerWrapper1, workerWrapper2);
+        Async.beginWork(workerWrapper, workerWrapper1, workerWrapper2);
         // Async.beginWork(800, workerWrapper, workerWrapper1, workerWrapper2);
         // Async.beginWork(1000, workerWrapper, workerWrapper1, workerWrapper2);
 
